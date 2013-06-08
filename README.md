@@ -1,1 +1,3 @@
-Tiles.
+# Tiles.
+
+A whimsical game of tile flipping.
