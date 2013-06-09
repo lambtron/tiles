@@ -1,23 +1,59 @@
 // Initialize variables.
+// var framerate = 60;
+var current_user;
+
 Meteor.startup(function() {
-  current_user = Users.insert({name: "Test", x:0, y:0});
+  current_user = Players.insert({name: "Test", x:0, y:0});
   Session.set("current_user", current_user);
 });
 
-// Main run loop.
-var mousePos;
-window.onmousemove = handleMouseMove;
-Meteor.setInterval(run, framerate);
+// var current_x = 0;
+// var current_y = 0;
 
-function handleMouseMove(event) {
-  event = event || window.event;
-  mousePos = {
-    x: event.clientX,
-    y: event.clientY
-  };
+// // Main run loop.
+// var mousePos;
+// window.onmousemove = handleMouseMove;
+// Meteor.setInterval(run, framerate);
+
+// function handleMouseMove(event) {
+//   // console.log("event: " + event + ", window event: " + window.event);
+//   event = event || window.event;
+//   mousePos = {
+//     x: event.clientX,
+//     y: event.clientY
+//   };
+// };
+
+// function run() {
+//   // console.log(window.mousePos);
+//   if (mousePos) {
+//     // Get width and height of the window in the run loop
+//     // in case people scale the window size during the game.
+//     // var windowWidth = window.innerWidth;
+//     // var windowHeight = window.innerHeight;
+
+//     // Convert x and y coordinates to percentages to scale for all screens.
+//     var current_x = mousePos.x;
+//     var current_y = mousePos.y;
+
+//     // Update current user's coordinates to the mouse.
+//     Players.update(Session.get("current_user"), {$set: {x: current_x, y: current_y}});
+
+//     // Testing.
+//     console.log(current_x + ", " + current_y);
+//   } else {
+//     return [0,0]
+//   }
+// };
+
+Template.players.player = function() {
+  return Players.find({});
 };
 
-function run() {
-  windowWidth = window.innerWidth;
-  windowHeight = window.innerHeight;
-}
+Template.players.events({
+  'mousemove': function(event) {
+    // This works in Firefox.
+    console.log(event.clientX + ", " + event.clientY);
+    Players.update(Session.get("current_user"), {$set: {x: event.clientX, y: event.clientY}});
+  }
+});

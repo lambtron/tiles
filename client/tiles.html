@@ -3,11 +3,26 @@
 </head>
 
 <body>
-  {{> hello}}
+  {{> players}}
+  {{tiles}}
 </body>
 
-<template name="hello">
-  <h1>Hello World!</h1>
-  {{greeting}}
-  <input type="button" value="Click" />
+<template name="players">
+	<div id="players">
+		{{#each player}}
+			{{> player}}
+		{{/each}}
+	</div>
+</template>
+
+<template name="player">
+	<p>{{name}}: {{x}}, {{y}}</p>
+	<!-- 1. Which box is the user on?
+	     2. Update the box (change class)
+	a. Determine the box that the user is on -->
+
+</template>
+
+<template name="tiles">
+	
 </template>
