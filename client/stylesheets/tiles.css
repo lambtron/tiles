@@ -6,13 +6,14 @@ html, body {
 	width: 100%;
 }
 
-#players {
+#tiles {
 	height: 100%;
 	width: 100%;
 }
 
 .tile {
-	background: blue;
+	display: inline-block;
 	height: 100px;
+	padding: 1px;
 	width: 100px;
 }

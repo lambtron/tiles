@@ -3,8 +3,7 @@
 </head>
 
 <body>
-  {{> players}}
-  {{tiles}}
+  {{> tiles}}
 </body>
 
 <template name="players">
@@ -20,9 +19,16 @@
 	<!-- 1. Which box is the user on?
 	     2. Update the box (change class)
 	a. Determine the box that the user is on -->
-
 </template>
 
 <template name="tiles">
-	
+	<div id="tiles">
+		{{#each tile}}
+			{{> tile}}
+		{{/each}}
+	</div>
+</template>
+
+<template name="tile">
+	<div id="tile-{{name}}" class="tile" style="background: {{color}}"></div>
 </template>

@@ -50,10 +50,19 @@ Template.players.player = function() {
   return Players.find({});
 };
 
-Template.players.events({
+Template.tiles.tile = function() {
+  return Tiles.find({});
+}
+
+Template.tiles.events({
+  'mouseenter .tile': function(event) {
+    // If mouseenter, then change the color of the tile.
+    // This returns _id and name of the tile in the Collection.
+    var color = '#'+Math.floor(Math.random()*16777215).toString(16);
+    Tiles.update(this._id, {$set: {color: color}});
+  },
   'mousemove': function(event) {
-    // This works in Firefox.
-    console.log(event.clientX + ", " + event.clientY);
+    // console.log(event.clientX + ", " + event.clientY);
     Players.update(Session.get("current_user"), {$set: {x: event.clientX, y: event.clientY}});
   }
 });
