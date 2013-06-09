@@ -8,7 +8,8 @@ Meteor.startup(function() {
 });
 
 Template.players.player = function() {
-  return Players.find({});
+  return Players.find({ _id: { $not: Session.get("current_user")}});
+  // return Players.find({});
 };
 
 Template.tiles.tile = function() {
@@ -23,7 +24,7 @@ Template.tiles.events({
     Tiles.update(this._id, {$set: {color: color}});
   },
   'mousemove': function(event) {
-    // console.log(event.clientX + ", " + event.clientY);
+    console.log(event.clientX + ", " + event.clientY);
     Players.update(Session.get("current_user"), {$set: {x: event.clientX, y: event.clientY}});
   }
 });

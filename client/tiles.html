@@ -3,6 +3,7 @@
 </head>
 
 <body>
+  {{> players}}
   {{> tiles}}
 </body>
 
@@ -15,7 +16,7 @@
 </template>
 
 <template name="player">
-	<p>{{name}}: {{x}}, {{y}}</p>
+	<div class="player" style="top: {{y}}px; left: {{x}}px"></div>
 	<!-- 1. Which box is the user on?
 	     2. Update the box (change class)
 	a. Determine the box that the user is on -->

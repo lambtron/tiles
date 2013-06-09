@@ -17,3 +17,12 @@ html, body {
 	padding: 1px;
 	width: 100px;
 }
+
+.player {
+	position: fixed;
+	width: 15px;
+	height: 30px;
+	background-size: 15px auto;
+	background-repeat: no-repeat;
+	background-image: url('/cursor.png');
+}
